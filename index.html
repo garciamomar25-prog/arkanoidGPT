@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkanoid Pro - Juego de Bloques</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Menú Principal -->
+        <div id="main-menu" class="menu active">
+            <h1 class="game-title">🎮 ARKANOID PRO</h1>
+            <div class="menu-buttons">
+                <button id="btn-play" class="menu-btn">▶ JUGAR</button>
+                <button id="btn-levels" class="menu-btn">📋 NIVELES</button>
+                <button id="btn-skins" class="menu-btn">🎨 SKINS</button>
+                <button id="btn-stats" class="menu-btn">📊 ESTADÍSTICAS</button>
+                <button id="btn-options" class="menu-btn">⚙️ OPCIONES</button>
+            </div>
+        </div>
+        
+        <!-- Selección de Nivel -->
+        <div id="level-select" class="menu">
+            <h2>Selección de Nivel</h2>
+            <div id="levels-grid" class="levels-grid"></div>
+            <button id="btn-back-levels" class="menu-btn back-btn">← Volver</button>
+        </div>
+        
+        <!-- Selección de Skins -->
+        <div id="skins-menu" class="menu">
+            <h2>Skins de Pelota</h2>
+            <div id="skins-grid" class="skins-grid"></div>
+            <button id="btn-back-skins" class="menu-btn back-btn">← Volver</button>
+        </div>
+        
+        <!-- Estadísticas -->
+        <div id="stats-menu" class="menu">
+            <h2>📊 Estadísticas</h2>
+            <div id="stats-content" class="stats-content"></div>
+            <h3>🏆 Mejores Puntuaciones</h3>
+            <div id="highscores-list" class="highscores-list"></div>
+            <button id="btn-back-stats" class="menu-btn back-btn">← Volver</button>
+        </div>
+        
+        <!-- Opciones -->
+        <div id="options-menu" class="menu">
+            <h2>⚙️ Opciones</h2>
+            <div class="options-content">
+                <div class="option-row">
+                    <label>🔊 Sonido</label>
+                    <input type="checkbox" id="sound-toggle" checked>
+                </div>
+                <div class="option-row">
+                    <label>🎵 Música</label>
+                    <input type="checkbox" id="music-toggle" checked>
+                </div>
+                <div class="option-row">
+                    <label>✨ Partículas</label>
+                    <input type="checkbox" id="particles-toggle" checked>
+                </div>
+                <div class="option-row">
+                    <button id="btn-reset-progress" class="menu-btn danger">🗑️ Borrar Progreso</button>
+                </div>
+            </div>
+            <button id="btn-back-options" class="menu-btn back-btn">← Volver</button>
+        </div>
+        
+        <!-- Menú de Pausa -->
+        <div id="pause-menu" class="menu overlay">
+            <h2>⏸️ PAUSA</h2>
+            <div class="menu-buttons">
+                <button id="btn-resume" class="menu-btn">▶ Continuar</button>
+                <button id="btn-restart" class="menu-btn">🔄 Reiniciar</button>
+                <button id="btn-quit" class="menu-btn">🏠 Menú Principal</button>
+            </div>
+        </div>
+        
+        <!-- Pantalla de Victoria -->
+        <div id="victory-screen" class="menu overlay">
+            <h2>🎉 ¡NIVEL COMPLETADO!</h2>
+            <div id="victory-stats" class="victory-stats"></div>
+            <div class="menu-buttons">
+                <button id="btn-next-level" class="menu-btn">➡️ Siguiente Nivel</button>
+                <button id="btn-victory-menu" class="menu-btn">🏠 Menú Principal</button>
+            </div>
+        </div>
+        
+        <!-- Pantalla de Game Over -->
+        <div id="gameover-screen" class="menu overlay">
+            <h2>💀 GAME OVER</h2>
+            <div id="gameover-stats" class="gameover-stats"></div>
+            <div class="menu-buttons">
+                <button id="btn-retry" class="menu-btn">🔄 Reintentar</button>
+                <button id="btn-gameover-menu" class="menu-btn">🏠 Menú Principal</button>
+            </div>
+        </div>
+        
+        <!-- HUD del juego -->
+        <div id="game-hud" class="hud">
+            <div class="hud-left">
+                <span id="hud-score">Puntos: 0</span>
+                <span id="hud-multiplier">x1</span>
+            </div>
+            <div class="hud-center">
+                <span id="hud-level">Nivel 1</span>
+            </div>
+            <div class="hud-right">
+                <span id="hud-lives">❤️❤️❤️</span>
+            </div>
+        </div>
+        
+        <!-- Power-ups activos -->
+        <div id="active-powerups" class="active-powerups"></div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/skins.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/powerups.js"></script>
+    <script src="js/classes/Particle.js"></script>
+    <script src="js/classes/Ball.js"></script>
+    <script src="js/classes/Paddle.js"></script>
+    <script src="js/classes/Brick.js"></script>
+    <script src="js/classes/PowerUp.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
